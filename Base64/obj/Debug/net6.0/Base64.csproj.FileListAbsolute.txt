@@ -1,0 +1,12 @@
+C:\Users\Harish\OneDrive\Documents\git\Nuget\Base64\Base64\bin\Debug\net6.0\Base64.deps.json
+C:\Users\Harish\OneDrive\Documents\git\Nuget\Base64\Base64\bin\Debug\net6.0\Base64.dll
+C:\Users\Harish\OneDrive\Documents\git\Nuget\Base64\Base64\bin\Debug\net6.0\ref\Base64.dll
+C:\Users\Harish\OneDrive\Documents\git\Nuget\Base64\Base64\bin\Debug\net6.0\Base64.pdb
+C:\Users\Harish\OneDrive\Documents\git\Nuget\Base64\Base64\obj\Debug\net6.0\Base64.csproj.AssemblyReference.cache
+C:\Users\Harish\OneDrive\Documents\git\Nuget\Base64\Base64\obj\Debug\net6.0\Base64.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Harish\OneDrive\Documents\git\Nuget\Base64\Base64\obj\Debug\net6.0\Base64.AssemblyInfoInputs.cache
+C:\Users\Harish\OneDrive\Documents\git\Nuget\Base64\Base64\obj\Debug\net6.0\Base64.AssemblyInfo.cs
+C:\Users\Harish\OneDrive\Documents\git\Nuget\Base64\Base64\obj\Debug\net6.0\Base64.csproj.CoreCompileInputs.cache
+C:\Users\Harish\OneDrive\Documents\git\Nuget\Base64\Base64\obj\Debug\net6.0\Base64.dll
+C:\Users\Harish\OneDrive\Documents\git\Nuget\Base64\Base64\obj\Debug\net6.0\ref\Base64.dll
+C:\Users\Harish\OneDrive\Documents\git\Nuget\Base64\Base64\obj\Debug\net6.0\Base64.pdb

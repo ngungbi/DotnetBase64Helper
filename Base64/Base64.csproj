@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>Ngb.Base64Helper</RootNamespace>
+        <PackageId>Ngb.Base64Helper</PackageId>
+        <Authors>Harish Mahatma Putra</Authors>
+    </PropertyGroup>
+
+</Project>
