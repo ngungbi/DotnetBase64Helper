@@ -7,6 +7,10 @@
         <RootNamespace>Ngb.Base64Helper</RootNamespace>
         <PackageId>Ngb.Base64Helper</PackageId>
         <Authors>Harish Mahatma Putra</Authors>
+        <Description>Add base64 helper functions using Span</Description>
+        <RepositoryUrl>https://github.com/ngungbi/DotnetBase64Helper</RepositoryUrl>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageLicenseUrl></PackageLicenseUrl>
     </PropertyGroup>
 
 </Project>

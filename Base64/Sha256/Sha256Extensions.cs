@@ -1,6 +1,6 @@
 using System.Security.Cryptography;
 
-namespace Base64.Sha256;
+namespace Ngb.Base64Helper.Sha256;
 
 public static class Sha256Extensions {
     public static string? ToSha256Base64String(this string source) {

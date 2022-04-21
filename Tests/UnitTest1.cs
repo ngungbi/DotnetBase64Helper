@@ -1,8 +1,8 @@
 using System;
 using System.Security.Cryptography;
 using System.Text;
-using Base64;
-using Base64.Sha256;
+using Ngb.Base64Helper;
+using Ngb.Base64Helper.Sha256;
 using NUnit.Framework;
 
 namespace Tests;

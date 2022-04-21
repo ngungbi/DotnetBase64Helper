@@ -1,4 +1,4 @@
-﻿namespace Base64;
+﻿namespace Ngb.Base64Helper;
 
 public static class Base64Extensions {
     private const char PaddingSign = '=';
