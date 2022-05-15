@@ -11,7 +11,7 @@
         <Description>Add base64 helper functions using Span</Description>
         <RepositoryUrl>https://github.com/ngungbi/DotnetBase64Helper</RepositoryUrl>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageLicenseUrl></PackageLicenseUrl>
+        <PackageLicenseUrl>https://raw.githubusercontent.com/ngungbi/DotnetBase64Helper/master/LICENSE</PackageLicenseUrl>
         <PackageVersion>1.0.1</PackageVersion>
     </PropertyGroup>
 
