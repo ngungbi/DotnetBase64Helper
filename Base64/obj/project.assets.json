@@ -12,7 +12,7 @@
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "restore": {
       "projectUniqueName": "C:\\Users\\Harish\\OneDrive\\Documents\\git\\Nuget\\Base64\\Base64\\Base64.csproj",
       "projectName": "Ngb.Base64Helper",

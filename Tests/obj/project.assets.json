@@ -883,7 +883,7 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
-      "Ngb.Base64Helper/1.0.0": {
+      "Ngb.Base64Helper/1.0.1": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "compile": {
@@ -3855,7 +3855,7 @@
         "system.xml.xdocument.nuspec"
       ]
     },
-    "Ngb.Base64Helper/1.0.0": {
+    "Ngb.Base64Helper/1.0.1": {
       "type": "project",
       "path": "../Base64/Base64.csproj",
       "msbuildProject": "../Base64/Base64.csproj"
@@ -3866,7 +3866,7 @@
       "Microsoft.NET.Test.Sdk >= 16.11.0",
       "NUnit >= 3.13.2",
       "NUnit3TestAdapter >= 4.0.0",
-      "Ngb.Base64Helper >= 1.0.0",
+      "Ngb.Base64Helper >= 1.0.1",
       "coverlet.collector >= 3.1.0"
     ]
   },
