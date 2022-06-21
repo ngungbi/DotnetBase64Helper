@@ -34,21 +34,7 @@ public static class Sha256Extensions {
         CopyToBytes(sourceSpan, byteSpan);
 
         return ToSha256Base64String(byteSpan, uriSafe);
-
-        // if (!sha256.TryComputeHash(byteSpan, sha256Span, out _)) {
-        //     throw new InvalidOperationException();
-        // }
-        //
-        // Span<char> base64Span = stackalloc char[44];
-        // if (!Convert.TryToBase64Chars(sha256Span, base64Span, out _)) {
-        //     throw new InvalidOperationException();
-        // }
-        //
-        // if (!uriSafe) return new string(base64Span);
-        //
-        // MakeUriSafe(base64Span);
-        //
-        // return new string(base64Span[..43]);
+        
     }
 
     private static void CopyToBytes(ReadOnlySpan<char> source, Span<byte> destination) {
