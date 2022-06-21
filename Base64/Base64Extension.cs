@@ -21,7 +21,7 @@ public static class Base64Extensions {
     /// <param name="source">Source array of bytes</param>
     /// <param name="trimPadding">If set to true, will remove padding at the end</param>
     /// <returns>Returns Base64 string or null when failed</returns>
-    public static string ToBase64String(this ReadOnlySpan<byte> source, bool trimPadding = false) {
+    public static string ToBase64String(this Span<byte> source, bool trimPadding = false) {
         var length = source.Length;
         Span<char> output = stackalloc char[length * 2];
         if (!Convert.TryToBase64Chars(source, output, out var count)) {
@@ -87,7 +87,7 @@ public static class Base64Extensions {
             Span<char> paddedSource = stackalloc char[totalCount];
             source.CopyTo(paddedSource);
             FillPadding(paddedSource, length, totalCount);
-            
+
             // if (paddingCount > 0) paddedSource[length..].Fill(PaddingSign);
 
             if (!Convert.TryFromBase64Chars(paddedSource, output, out writeCount)) return string.Empty;
@@ -108,20 +108,40 @@ public static class Base64Extensions {
     /// <param name="source"></param>
     /// <param name="addPadding">If sets to true, will returns Base64 string with padding</param>
     /// <returns></returns>
-    public static byte[] ToByteArrayFromBase64(this string source, bool addPadding = false) {
+    [Obsolete($"Use {nameof(ToByteArrayFromBase64)} without addPadding parameter")]
+    public static byte[] ToByteArrayFromBase64(this string source, bool addPadding) {
+        return ToByteArrayFromBase64(source.AsSpan());
+    }
+
+    /// <summary>
+    /// Converts Base64 string to array of bytes.
+    /// </summary>
+    /// <param name="source"></param>
+    /// <returns></returns>
+    public static byte[] ToByteArrayFromBase64(this string source) {
+        return ToByteArrayFromBase64(source.AsSpan());
+    }
+
+    /// <summary>
+    /// Converts Base64 string to array of bytes.
+    /// </summary>
+    /// <param name="source"></param>
+    /// <returns></returns>
+    public static byte[] ToByteArrayFromBase64(this ReadOnlySpan<char> source) {
         var length = source.Length;
         Span<byte> output = stackalloc byte[length];
         int writeCount;
-        if (addPadding) {
-            var totalCount = length + GetPaddingCount(length);
+        var paddingCount = GetPaddingCount(length);
+        if (paddingCount == 0) {
+            if (!Convert.TryFromBase64Chars(source, output, out writeCount)) return Array.Empty<byte>();
+        } else {
+            var totalCount = length + paddingCount;
             Span<char> paddedSource = stackalloc char[totalCount];
             source.CopyTo(paddedSource);
             FillPadding(paddedSource, length, totalCount);
             // paddedSource[length..].Fill(PaddingSign);
 
             if (!Convert.TryFromBase64Chars(paddedSource, output, out writeCount)) return Array.Empty<byte>();
-        } else {
-            if (!Convert.TryFromBase64Chars(source, output, out writeCount)) return Array.Empty<byte>();
         }
 
         return output[..writeCount].ToArray();

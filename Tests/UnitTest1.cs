@@ -71,7 +71,7 @@ public class Tests {
         var origin = output.ToByteArrayFromBase64();
         Assert.AreEqual(origin, reference);
 
-        origin = output.ToByteArrayFromBase64(true);
+        origin = output.ToByteArrayFromBase64();
         Assert.AreEqual(origin, reference);
     }
 
@@ -84,15 +84,14 @@ public class Tests {
         var reference = Encoding.UTF8.GetBytes(input);
 
         var origin = output.ToByteArrayFromBase64();
-        if (output.Length % 4 != 0) Assert.IsNull(origin);
-
-        origin = output.ToByteArrayFromBase64(true);
+        // if (output.Length % 4 != 0) Assert.AreEqual(origin.Length, 0);
+        // origin = output.ToByteArrayFromBase64();
         Assert.AreEqual(origin, reference);
     }
 
     [Test]
-    [TestCase("halo dunia","CbULL2heeng+7uAtgHDmcNSK8RiksA97/r6fjw5dPVI=")]
-    [TestCase("coba lagi","uC0s/5+tL6tiMglHMkoeZodPnJUq9J/O7iajOvAo9lY=")]
+    [TestCase("halo dunia", "CbULL2heeng+7uAtgHDmcNSK8RiksA97/r6fjw5dPVI=")]
+    [TestCase("coba lagi", "uC0s/5+tL6tiMglHMkoeZodPnJUq9J/O7iajOvAo9lY=")]
     public void Sha256Test(string input, string output) {
         // var source = "halo dunia";
         string reference;
@@ -102,13 +101,14 @@ public class Tests {
             reference = Convert.ToBase64String(hashed);
             Assert.AreEqual(reference, output);
         }
+
         var result = input.ToSha256Base64String();
         Assert.AreEqual(result, reference);
     }
-    
+
     [Test]
-    [TestCase("halo dunia","CbULL2heeng+7uAtgHDmcNSK8RiksA97/r6fjw5dPVI=")]
-    [TestCase("coba lagi","uC0s/5+tL6tiMglHMkoeZodPnJUq9J/O7iajOvAo9lY=")]
+    [TestCase("halo dunia", "CbULL2heeng+7uAtgHDmcNSK8RiksA97/r6fjw5dPVI=")]
+    [TestCase("coba lagi", "uC0s/5+tL6tiMglHMkoeZodPnJUq9J/O7iajOvAo9lY=")]
     public void Sha256FromBytesTest(string input, string output) {
         // var source = "halo dunia";
         string reference;
@@ -125,8 +125,8 @@ public class Tests {
     }
 
     [Test]
-    [TestCase("halo dunia","CbULL2heeng.7uAtgHDmcNSK8RiksA97_r6fjw5dPVI")]
-    [TestCase("coba lagi","uC0s_5.tL6tiMglHMkoeZodPnJUq9J_O7iajOvAo9lY")]
+    [TestCase("halo dunia", "CbULL2heeng.7uAtgHDmcNSK8RiksA97_r6fjw5dPVI")]
+    [TestCase("coba lagi", "uC0s_5.tL6tiMglHMkoeZodPnJUq9J_O7iajOvAo9lY")]
     public void Sha256UrlSafeTest(string input, string output) {
         // var source = "halo dunia";
         // string reference;
