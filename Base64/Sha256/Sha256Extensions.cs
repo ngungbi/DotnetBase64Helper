@@ -48,7 +48,9 @@ public static class Sha256Extensions {
         // CopyToBytes(source, byteSpan);
         Span<byte> sha256Bytes = stackalloc byte[32];
         if (!SHA256.TryHashData(source, sha256Bytes, out _)) return false;
-        return Convert.TryToBase64Chars(sha256Bytes, destination, out _);
+        if (!Convert.TryToBase64Chars(sha256Bytes, destination, out _)) return false;
+        if (uriSafe) MakeUriSafe(destination);
+        return true;
     }
 
     public static string ToSha256Base64String(this string source, bool uriSafe = false) {
