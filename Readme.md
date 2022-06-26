@@ -78,4 +78,4 @@ Results
 | TraditionalBase64 | 90.01 ns | 1.853 ns | 2.830 ns | 0.0362 |     152 B |
 |  WithBase64Helper | 87.96 ns | 1.819 ns | 2.233 ns | 0.0229 |      96 B |
 ```
-With this package it is slightly faster and allocated much less memory
+With this package it is slightly faster and allocated much less memory (exact performance result may vary)

@@ -9,10 +9,10 @@
   },
   "packageFolders": {
     "C:\\Users\\Harish\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet": {}
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
-    "version": "1.0.2",
+    "version": "1.0.3",
     "restore": {
       "projectUniqueName": "C:\\Users\\Harish\\OneDrive\\Documents\\git\\Nuget\\Base64\\Base64\\Base64.csproj",
       "projectName": "Ngb.Base64Helper",
@@ -21,7 +21,7 @@
       "outputPath": "C:\\Users\\Harish\\OneDrive\\Documents\\git\\Nuget\\Base64\\Base64\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet"
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
         "C:\\Users\\Harish\\AppData\\Roaming\\NuGet\\NuGet.Config",

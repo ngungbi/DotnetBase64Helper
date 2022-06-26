@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "o1fAiwLqZEcwI4GwnnJWnSP/VI+cHmo+ZV0s3uh3DXlonvJ6nqAOF5cuBTzG2OlQzQXmBm5eeZLD7vKCkQJoWQ==",
+  "dgSpecHash": "cZbNinJgrWzRA6CEl2pqTRXmegyHaiInok/5upLQe9Hi6HGcMtjL1k2qPRmSM5AYj9wWdMiW4KLDDK6/mS9l9Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\Harish\\OneDrive\\Documents\\git\\Nuget\\Base64\\Tests\\Tests.csproj",
   "expectedPackageFiles": [
@@ -50,7 +50,7 @@
     "C:\\Users\\Harish\\.nuget\\packages\\system.threading.tasks.extensions\\4.0.0\\system.threading.tasks.extensions.4.0.0.nupkg.sha512",
     "C:\\Users\\Harish\\.nuget\\packages\\system.xml.readerwriter\\4.0.11\\system.xml.readerwriter.4.0.11.nupkg.sha512",
     "C:\\Users\\Harish\\.nuget\\packages\\system.xml.xdocument\\4.0.11\\system.xml.xdocument.4.0.11.nupkg.sha512",
-    "C:\\Users\\Harish\\.nuget\\packages\\ngb.base64helper\\1.0.2\\ngb.base64helper.1.0.2.nupkg.sha512"
+    "C:\\Users\\Harish\\.nuget\\packages\\ngb.base64helper\\1.0.3\\ngb.base64helper.1.0.3.nupkg.sha512"
   ],
   "logs": []
 }

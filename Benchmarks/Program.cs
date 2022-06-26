@@ -5,4 +5,5 @@ using Benchmarks;
 
 Console.WriteLine("Hello, World!");
 
-BenchmarkRunner.Run<StringToBase64Benchmark>();
+BenchmarkRunner.Run<Sha256Benchmark>();
+// BenchmarkRunner.Run<StringToBase64Benchmark>();
