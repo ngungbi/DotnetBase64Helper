@@ -10,7 +10,7 @@ public static class Base64Extensions {
     /// </summary>
     /// <param name="source">Source array of bytes</param>
     /// <param name="trimPadding">If set to true, will remove padding at the end</param>
-    /// <returns>Returns Base64 string or null when failed</returns>
+    /// <returns>Returns Base64 string or <c>string.Empty</c> when failed</returns>
     public static string ToBase64String(this byte[] source, bool trimPadding = false) {
         return ToBase64String(source.AsSpan(), trimPadding);
     }
@@ -20,12 +20,13 @@ public static class Base64Extensions {
     /// </summary>
     /// <param name="source">Source array of bytes</param>
     /// <param name="trimPadding">If set to true, will remove padding at the end</param>
-    /// <returns>Returns Base64 string or null when failed</returns>
+    /// <returns>Returns Base64 string or <c>string.Empty</c> when failed</returns>
     public static string ToBase64String(this Span<byte> source, bool trimPadding = false) {
         var length = source.Length;
         Span<char> output = stackalloc char[length * 2];
         if (!Convert.TryToBase64Chars(source, output, out var count)) {
-            throw new InvalidOperationException();
+            // throw new InvalidOperationException();
+            return string.Empty;
         }
 
         if (trimPadding) {
@@ -43,26 +44,16 @@ public static class Base64Extensions {
     /// </summary>
     /// <param name="source">Source string</param>
     /// <param name="trimPadding">If set to true, will remove padding at the end</param>
-    /// <returns>Returns Base64 string or null when failed</returns>
+    /// <returns>Returns Base64 string or <c>string.Empty</c> when failed</returns>
     public static string ToBase64String(this string source, bool trimPadding = false) {
         var length = source.Length;
-        Span<char> output = stackalloc char[length * 2];
+        // Span<char> output = stackalloc char[length * 2];
         Span<byte> byteSpan = stackalloc byte[length];
 
+
         CopyToBytes(source.AsSpan(), byteSpan);
-
-        if (!Convert.TryToBase64Chars(byteSpan, output, out var count)) {
-            throw new InvalidOperationException();
-        }
-
-        if (trimPadding) {
-            var equalPosition = output.IndexOf(PaddingSign);
-            if (equalPosition > 0) {
-                return new string(output[..equalPosition]);
-            }
-        }
-
-        return new string(output[..count]);
+        return ToBase64String(byteSpan, trimPadding);
+        
     }
 
     [Obsolete($"Use {nameof(ToStringFromBase64)} without addPadding parameter")]
@@ -77,24 +68,9 @@ public static class Base64Extensions {
     public static string ToStringFromBase64(this string source) {
         var length = source.Length;
         Span<byte> output = stackalloc byte[length];
-        int writeCount;
-        // if (addPadding) {
-        var paddingCount = GetPaddingCount(length);
-        if (paddingCount == 0) {
-            if (!Convert.TryFromBase64Chars(source, output, out writeCount)) return string.Empty;
-        } else {
-            var totalCount = length + paddingCount;
-            Span<char> paddedSource = stackalloc char[totalCount];
-            source.CopyTo(paddedSource);
-            FillPadding(paddedSource, length, totalCount);
-
-            // if (paddingCount > 0) paddedSource[length..].Fill(PaddingSign);
-
-            if (!Convert.TryFromBase64Chars(paddedSource, output, out writeCount)) return string.Empty;
-        }
+        if (!TryToBytesFromBase64(source.AsSpan(), output, out var writeCount)) return string.Empty;
 
         Span<char> outputChars = stackalloc char[writeCount];
-        // CopyToChars(output[..writeCount], outputChars);
         for (int i = 0; i < writeCount; i++) {
             outputChars[i] = (char) output[i];
         }
@@ -130,21 +106,22 @@ public static class Base64Extensions {
     public static byte[] ToByteArrayFromBase64(this ReadOnlySpan<char> source) {
         var length = source.Length;
         Span<byte> output = stackalloc byte[length];
-        int writeCount;
+        if (TryToBytesFromBase64(source, output, out var count)) return output[..count].ToArray();
+        return Array.Empty<byte>();
+    }
+
+    private static bool TryToBytesFromBase64(ReadOnlySpan<char> source, Span<byte> destination, out int bytesWritten) {
+        var length = source.Length;
         var paddingCount = GetPaddingCount(length);
         if (paddingCount == 0) {
-            if (!Convert.TryFromBase64Chars(source, output, out writeCount)) return Array.Empty<byte>();
-        } else {
-            var totalCount = length + paddingCount;
-            Span<char> paddedSource = stackalloc char[totalCount];
-            source.CopyTo(paddedSource);
-            FillPadding(paddedSource, length, totalCount);
-            // paddedSource[length..].Fill(PaddingSign);
-
-            if (!Convert.TryFromBase64Chars(paddedSource, output, out writeCount)) return Array.Empty<byte>();
+            return Convert.TryFromBase64Chars(source, destination, out bytesWritten);
         }
 
-        return output[..writeCount].ToArray();
+        var totalCount = length + paddingCount;
+        Span<char> paddedSource = stackalloc char[totalCount];
+        source.CopyTo(paddedSource);
+        paddedSource[length..].Fill(PaddingSign);
+        return Convert.TryFromBase64Chars(paddedSource, destination, out bytesWritten);
     }
 
     private static void FillPadding(Span<char> chars, int start, int end) {
